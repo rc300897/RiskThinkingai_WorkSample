@@ -12,3 +12,5 @@ The entire process is done in the following steps:
 * The configuration used for airflow and its dependencies are included in the airflow config file attached.
 * The Dag was written in python using VS Code.
 * All the logs for the pipleine tasks are included in the respective folder.
+
+Filename second_dag.py is the complet DAG pipeline.

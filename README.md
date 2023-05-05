@@ -14,3 +14,20 @@ The entire process is done in the following steps:
 * All the logs for the pipleine tasks are included in the respective folder.
 
 Filename second_dag.py is the complet DAG pipeline.
+
+## Configuration used for Airflow
+
+* Local Executor for parallelization of tasks. (Tasks read_data_process and task read_data_and_calculate_rolling_mean_and_rolling_median start simentaneously.)
+* Postgres database was used to store metadata from the airflow.
+* Airflow was installed locally and scheduler, webserver were run on localhost and port 8080.
+* Python version 3.9 was used along with airflow.
+* All the modules were installed using pip install.
+
+## References
+* https://stackoverflow.com/questions/69231797/airflow-dag-fails-when-pythonoperator-with-error-negsignal-sigkill
+* https://stackoverflow.com/questions/57668584/airflow-scheduler-does-not-appear-to-be-running-after-execute-a-task
+* https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html
+* https://rollbar.com/blog/python-operationalerror/#:~:text=OperationalError%20is%20a%20class%20of,method%20are%20incorrect%20or%20invalid.
+* https://www.youtube.com/watch?v=AZfJ8buL5II&t=168s
+* https://www.youtube.com/watch?v=LL5WP_T-jvA&t=99s
+* 

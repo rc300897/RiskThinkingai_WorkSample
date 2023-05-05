@@ -30,4 +30,3 @@ Filename second_dag.py is the complet DAG pipeline.
 * https://rollbar.com/blog/python-operationalerror/#:~:text=OperationalError%20is%20a%20class%20of,method%20are%20incorrect%20or%20invalid.
 * https://www.youtube.com/watch?v=AZfJ8buL5II&t=168s
 * https://www.youtube.com/watch?v=LL5WP_T-jvA&t=99s
-* 

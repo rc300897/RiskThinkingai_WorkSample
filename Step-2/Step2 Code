@@ -1,0 +1,20 @@
+# Code to read input data files, create aggregated columns and write to a single paruet file and save it in a second directory.
+def read_data_and_calculate_rollingmean_and_rollingmedian():
+    directory_path = "/Users/rahulchalla/airflow/data/Stocks_data"
+    files_path_aggregated = "/Users/rahulchalla/airflow/data/aggregated_data/aggregated_data.parquet"
+    dfs = []
+    for root, dirs, files in os.walk(directory_path):
+        for file in files:
+            if file.endswith(".csv"):
+                df = pd.read_csv(os.path.join(root,file))
+                df['Symbol'] = file[:-3]
+                if root[-4:] == "etfs":
+                    df['Security Name'] = "etfs"
+                elif root[-6:] == "stocks":
+                    df['Security Name'] = "stock"
+                rollings = df['Volume'].rolling(30)
+                df['vol_moving_avg'] = rollings.mean()
+                df['adj_close_rolling_med'] = rollings.median()
+                dfs.append(df)
+    comb_df = pd.concat(dfs,ignore_index= True)
+    comb_df.to_parquet(files_path_aggregated,index = False)

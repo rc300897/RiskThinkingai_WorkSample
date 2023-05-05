@@ -1,0 +1,17 @@
+def read_data_process():
+    directory_path = "/Users/rahulchalla/airflow/data/Stocks_data"
+    files_path_processed ="/Users/rahulchalla/airflow/data/processed_data/processed_data.parquet"
+
+    dfs = []
+    for root, dirs, files in os.walk(directory_path):
+        for file in files:
+            if file.endswith(".csv"):
+                df = pd.read_csv(os.path.join(root,file))
+                df['Symbol'] = file[:-3]
+                if root[-4:] == "etfs":
+                    df['Security Name'] = "etfs"
+                elif root[-6:] == "stocks":
+                    df['Security Name'] = "stock"
+                dfs.append(df)
+    comb_df = pd.concat(dfs,ignore_index= True)
+    comb_df.to_parquet(files_path_processed,index = False)  
